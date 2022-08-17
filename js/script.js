@@ -33,11 +33,9 @@ function displayResult(argComputerMove, argPlayerMove){
     printMessage('Tym razem przegrywasz :(');
   }
 }
-let argComputerMove = getMoveName(argMoveId);
-let argPlayerMove = getMoveName(argMoveId);
+let argComputerMove = getMoveName(argComputerMove);
+let argPlayerMove = getMoveName(argPlayerMove);
 
 printMessage('Twój ruch to: ' + argPlayerMove);
 
 let game = displayResult('.');
-
-
