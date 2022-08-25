@@ -1,41 +1,51 @@
-let randomNumber = Math.floor(Math.random() * 3 + 1);
-console.log('Wylosowana liczba to: ' + randomNumber);
-
-
-printMessage('Mój ruch to: ' + argcomputerMove);
-
-let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
-
-console.log('Gracz wpisał: ' + playerInput);
-
-function getMoveName(argMoveId){
-  if(argMoveId == 1){
+function playGame(1,2,3){
+  playerInput();
+  clearMessages();
+ function getMoveName(moveNumber){
+  if(moveNumber == 1){
     return 'kamień';
-  } else if(argMoveId == 2){
+  } else if(moveNumber == 2){
     return 'papier';
-  } else if(argMoveId == 3){
+  } else if(moveNumber == 3){
     return 'nożyce';
   } else {
-    printMessage('Nie znam ruchu o id ' + argMoveId + '.');
+    printMessage('Nie znam ruchu o id ' + moveNumber + '.');
     return 'nieznany ruch';
   }
-}
-function displayResult(argComputerMove, argPlayerMove){
+ }
+ function displayResult(argComputerMove, argPlayerMove){
+  console.log('moves:', argComputerMove, argPlayerMove);
   printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
 
   if( argComputerMove == 'kamień' && argPlayerMove == 'papier')||
     ( argComputerMove == 'papier' && argPlayerMove == 'nożyce')||
     ( argComputerMove == 'nożyce' && argPlayerMove == 'kamień'){
-    printMessage('Ty wygrywasz!');
+      printMessage('Ty wygrywasz!');
   } else if (argComputerMove == argPlayerMove){
     printMessage('Remis')
   } else {
     printMessage('Tym razem przegrywasz :(');
   }
 }
-let argComputerMove = getMoveName(argComputerMove);
-let argPlayerMove = getMoveName(argPlayerMove);
+ let randomNumber = Math.floor(Math.random() * 3 + 1); //1 | 2 | 3
+ let computerMove = getMoveName(randomNumer); //"kamień" | "papier" | "nożyce"
+ printMessage('Mój ruch to: ' + computerMove);
 
-printMessage('Twój ruch to: ' + argPlayerMove);
+ //let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
+console.log('Gracz wpisał: ' + playerInput);
+ let playerMove = getMoveName(playerInput);
 
-let game = displayResult('.');
+ displayResult(playerMove, computerMove);
+}
+function buttonClicked(){
+  printMessage('zagrałeś' + playerMove);
+}
+
+let playRock = document.getElementById('kamień');
+playRock.addEventListener('click', buttonClicked);
+
+let playPaper = document.getElementById('papier');
+playPaper.addEventListener('click', buttonClicked);
+
+let playScrissors = document.getElementById('nożyce');
+playRock.addEventListener('click', buttonClicked);
